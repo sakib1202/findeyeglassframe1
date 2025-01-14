@@ -2,4 +2,4 @@ flask
 tensorflow
 pillow
 numpy
-gunicorn==20.1.0
+guvicorn==20.1.0
