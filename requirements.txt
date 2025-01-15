@@ -2,4 +2,4 @@ flask
 tensorflow
 pillow
 numpy
-guvicorn
+guvicorn 
