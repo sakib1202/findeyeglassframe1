@@ -110,6 +110,15 @@ else:
     print("All subfolders present in TEST_DATASET path.")
 CATEGORIES=["heart","long","oval","round","square"]
 
+!pip install -q kaggle
+!mkdir ~/.kaggleChoos
+from google.colab import files
+files.upload()
+!cp ~/.kaggle/kaggle.json
+!chmod600 ~/.kaggle/kaggle.json
+!kaggle datasets list
+!kaggle datasets download 'mantasu/glasses-segmentation-synthetic-dataset'
+
 import os
 import numpy as np
 import tensorflow as tf
@@ -135,7 +144,7 @@ train_datagen = ImageDataGenerator(
 test_datagen = ImageDataGenerator(rescale=1.0 / 255.0)
 
 import os
-
+!ls /content
 
 train_dir = "/content/drive/MyDrive/Face set/Train face"
 test_dir = "/content/drive/MyDrive/Face set/Test face"
@@ -145,7 +154,7 @@ if os.path.exists(train_dir):
     print(f"Training directory found: {train_dir}")
 else:
     print(f"Training directory NOT found: {train_dir}")
-
+!unzip -o eyeglasses-segmentation-dataset.zip -d /content
 
 
 if os.path.exists(test_dir):
@@ -158,7 +167,7 @@ if os.path.exists(frame_dir):
 else:
     print(f"Training directory NOT found: {frame_dir}")
 
-
+!unzip -o eyeglasses-segmentation-dataset.zip -d /content
 
 train_data = train_datagen.flow_from_directory(
     train_dir,
